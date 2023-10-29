@@ -70,15 +70,32 @@ namespace CheckoutKataKeoghs
                     Total_Promotion_B += 15;
                 }
                 Total_With_Promotion += Total_Promotion_B;
-                //MessageBox.Show("Whole Promotions");
-                //MessageBox.Show(numberOfItemsPromB.ToString());
-                // Remainder Items
-                //MessageBox.Show("Remainder Items");
-                //MessageBox.Show(RemainedOfB.ToString());
             }
             if(PromotionItemDCCounter > 0)
             {
                 // Add Items With Promotion D Applied
+                int numberOfItemsPromD = PromotionItemDCCounter / ActivePromotions.Active_Promotions["D"].Quantity;
+                int RemainedOfD = PromotionItemDCCounter % ActivePromotions.Active_Promotions["D"].Quantity;
+
+                MessageBox.Show("Whole Promotions");
+                MessageBox.Show(numberOfItemsPromD.ToString());
+                //Remainder Items
+                MessageBox.Show("Remainder Items");
+                MessageBox.Show(RemainedOfD.ToString());
+                Double DiscountApplied = 100 - ActivePromotions.Active_Promotions["D"].Percentage_Discount;
+                DiscountApplied = DiscountApplied / 100;
+                MessageBox.Show(DiscountApplied.ToString());
+                // Whole Promotions
+                for (int i = 0; i< numberOfItemsPromD;i++)
+                {
+                    Total_Promotion_D += 110.00 * DiscountApplied;
+                }
+                // Remainder
+                for(int i = 0; i < RemainedOfD;i++)
+                {
+                    Total_Promotion_D += 55;
+                }
+                Total_With_Promotion += Total_Promotion_D;
             }
 
             Total = Total_Without_Promotion + Total_With_Promotion;
