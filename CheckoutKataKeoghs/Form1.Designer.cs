@@ -182,6 +182,7 @@
             item_a_input.Name = "item_a_input";
             item_a_input.Size = new Size(56, 23);
             item_a_input.TabIndex = 30;
+            item_a_input.TextChanged += item_a_input_TextChanged;
             // 
             // item_b_input
             // 
@@ -189,6 +190,7 @@
             item_b_input.Name = "item_b_input";
             item_b_input.Size = new Size(56, 23);
             item_b_input.TabIndex = 31;
+            item_b_input.TextChanged += item_b_input_TextChanged;
             // 
             // item_c_input
             // 
@@ -196,6 +198,7 @@
             item_c_input.Name = "item_c_input";
             item_c_input.Size = new Size(56, 23);
             item_c_input.TabIndex = 32;
+            item_c_input.TextChanged += item_c_input_TextChanged;
             // 
             // item_d_input
             // 
@@ -203,6 +206,7 @@
             item_d_input.Name = "item_d_input";
             item_d_input.Size = new Size(56, 23);
             item_d_input.TabIndex = 33;
+            item_d_input.TextChanged += item_d_input_TextChanged;
             // 
             // Form1
             // 
