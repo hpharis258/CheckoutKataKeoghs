@@ -175,6 +175,7 @@
             add_button.TabIndex = 29;
             add_button.Text = "Add";
             add_button.UseVisualStyleBackColor = true;
+            add_button.Click += add_button_Click;
             // 
             // item_a_input
             // 
@@ -232,6 +233,7 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Checkout Kata";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

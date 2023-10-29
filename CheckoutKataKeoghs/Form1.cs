@@ -6,7 +6,15 @@ namespace CheckoutKataKeoghs
     {
         // User Input Validation RegEx
         string pattern = @"^\d+$";
-
+        int Total_Items = 0;
+        // Prices
+        Price Price_10 = new Price(10.00);
+        Price Price_15 = new Price(15.00);
+        Price Price_40 = new Price(40.00);
+        Price Price_55 = new Price(55.00);
+        Basket Basket = new Basket();
+        Checkout Checkout;
+        //
         public Form1()
         {
             InitializeComponent();
@@ -63,6 +71,46 @@ namespace CheckoutKataKeoghs
                 MessageBox.Show("Enter a Valid Quantity for Item D!");
                 item_d_input.Text = "";
             }
+        }
+
+        private void add_button_Click(object sender, EventArgs e)
+        {
+            // Raw user Input
+            String? item_a = item_a_input.Text;
+            String? item_b = item_b_input.Text;
+            String? item_c = item_c_input.Text;
+            String? item_d = item_d_input.Text;
+            // Parse to Int
+            int Item_A_QTY = Int32.Parse(item_a == "" ? "0" : item_a);
+            int Item_B_QTY = Int32.Parse(item_b == "" ? "0" : item_b);
+            int Item_C_QTY = Int32.Parse(item_c == "" ? "0" : item_c);
+            int Item_D_QTY = Int32.Parse(item_d == "" ? "0" : item_d);
+            //
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Items
+            Item Item_A = new Item("A", Price_10);
+            Item Item_B = new Item("B", Price_15);
+            Item Item_C = new Item("C", Price_40);
+            Item Item_D = new Item("D", Price_55);
+            // Promotions
+            Promotion ThreeForForty = new Promotion(3, Fixed_Price: 40.00);
+            Promotion TwentyFiveForEveryTwoPurchased = new Promotion(2, Percentage_Discount: 25.00);
+            // Active Promotions Valid For following Items:
+            Dictionary<String, Promotion> ActivePromotions = new Dictionary<String, Promotion>();
+            ActivePromotions.Add(Item_B.SKU, ThreeForForty);
+            ActivePromotions.Add(Item_D.SKU, TwentyFiveForEveryTwoPurchased);
+            ActivePromotions CurrentActivePromotions = new ActivePromotions(ActivePromotions);
+            //
+            List<Item> Items = new List<Item>();
+            Items.Add(Item_A);
+            Items.Add(Item_B);
+            Items.Add(Item_C);
+            Items.Add(Item_D);
+            
         }
     }
 }
