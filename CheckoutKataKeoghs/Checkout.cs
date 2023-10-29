@@ -30,6 +30,8 @@ namespace CheckoutKataKeoghs
             Double Total_Without_Promotion = 0;
             Double Total_With_Promotion = 0;
             //
+            double Total_Promotion_B = 0;
+            double Total_Promotion_D = 0;
 
             // Loop Selected Basket Items
             foreach (var item in this.Basket.SelectedItems)
@@ -54,14 +56,32 @@ namespace CheckoutKataKeoghs
             }
             if(PromotionItemBCounter > 0)
             {
-                // Add Items With Promotion B Applied
+                int numberOfItemsPromB = PromotionItemBCounter / ActivePromotions.Active_Promotions["B"].Quantity;
+                int RemainedOfB = PromotionItemBCounter % ActivePromotions.Active_Promotions["B"].Quantity;
+                // Whole Promotions
+                for(int i = 0; i< numberOfItemsPromB; i++)
+                {
+                    // Apply Whole Promotions
+                    Total_Promotion_B += ActivePromotions.Active_Promotions["B"].Fixed_Price;
+                }
+                // Remainder Items
+                for(int i = 0; i < RemainedOfB; i++)
+                {
+                    Total_Promotion_B += 15;
+                }
+                Total_With_Promotion += Total_Promotion_B;
+                //MessageBox.Show("Whole Promotions");
+                //MessageBox.Show(numberOfItemsPromB.ToString());
+                // Remainder Items
+                //MessageBox.Show("Remainder Items");
+                //MessageBox.Show(RemainedOfB.ToString());
             }
             if(PromotionItemDCCounter > 0)
             {
                 // Add Items With Promotion D Applied
             }
-            
-            Total = Total_Without_Promotion;
+
+            Total = Total_Without_Promotion + Total_With_Promotion;
             return Total;
         }
     }
