@@ -77,14 +77,9 @@ namespace CheckoutKataKeoghs
                 int numberOfItemsPromD = PromotionItemDCCounter / ActivePromotions.Active_Promotions["D"].Quantity;
                 int RemainedOfD = PromotionItemDCCounter % ActivePromotions.Active_Promotions["D"].Quantity;
 
-                MessageBox.Show("Whole Promotions");
-                MessageBox.Show(numberOfItemsPromD.ToString());
                 //Remainder Items
-                MessageBox.Show("Remainder Items");
-                MessageBox.Show(RemainedOfD.ToString());
                 Double DiscountApplied = 100 - ActivePromotions.Active_Promotions["D"].Percentage_Discount;
                 DiscountApplied = DiscountApplied / 100;
-                MessageBox.Show(DiscountApplied.ToString());
                 // Whole Promotions
                 for (int i = 0; i< numberOfItemsPromD;i++)
                 {
