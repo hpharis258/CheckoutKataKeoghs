@@ -14,6 +14,7 @@ namespace CheckoutKataKeoghs
         Price Price_55 = new Price(55.00);
         Basket Basket = new Basket();
         Checkout Checkout;
+        Double Total_Amount;
         //
         public Form1()
         {
@@ -108,6 +109,10 @@ namespace CheckoutKataKeoghs
             }
             // Display Total Item Count
             Total_Items_Display.Text = Basket.Count.ToString();
+            // Calculate and Display Total
+            Total_Amount = Checkout.Calculate_Total();
+            Total_Amount_Display.Text = Total_Amount.ToString()+ "£";
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

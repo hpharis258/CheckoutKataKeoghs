@@ -23,10 +23,15 @@ namespace CheckoutKataKeoghs
         // Calculate Total
         public double Calculate_Total()
         {
+            // Promotion Item Counter 
+            int PromotionItemBCounter = 0;
+            int PromotionItemDCCounter = 0;
             // Totals
             Double Total_Without_Promotion = 0;
             Double Total_With_Promotion = 0;
             //
+
+            // Loop Selected Basket Items
             foreach (var item in this.Basket.SelectedItems)
             {
                 // Check if item SKU is in active promotions
@@ -35,8 +40,27 @@ namespace CheckoutKataKeoghs
                     // Calculate total without Promotion Items
                     Total_Without_Promotion += item.Price.Unit_Price;
                 }
-               
+                else
+                {
+                    // Item is in Active Promotions find Which Promotion
+                    if(item.SKU == "B")
+                    {
+                        PromotionItemBCounter ++;
+                    }else if(item.SKU == "D")
+                    {
+                        PromotionItemDCCounter ++;
+                    }
+                }
             }
+            if(PromotionItemBCounter > 0)
+            {
+                // Add Items With Promotion B Applied
+            }
+            if(PromotionItemDCCounter > 0)
+            {
+                // Add Items With Promotion D Applied
+            }
+            
             Total = Total_Without_Promotion;
             return Total;
         }
