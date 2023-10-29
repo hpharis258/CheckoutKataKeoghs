@@ -85,8 +85,29 @@ namespace CheckoutKataKeoghs
             int Item_B_QTY = Int32.Parse(item_b == "" ? "0" : item_b);
             int Item_C_QTY = Int32.Parse(item_c == "" ? "0" : item_c);
             int Item_D_QTY = Int32.Parse(item_d == "" ? "0" : item_d);
-            //
-
+            // Add Items To Basket
+            for (int a = 0; a < Item_A_QTY; a++)
+            {
+                Item A_Item = new Item("A", Price_10);
+                Basket.AddItem(A_Item);
+            }
+            for (int b = 0; b < Item_B_QTY; b++)
+            {
+                Item B_Item = new Item("B", Price_15);
+                Basket.AddItem(B_Item);
+            }
+            for (int c = 0; c < Item_C_QTY; c++)
+            {
+                Item C_Item = new Item("C", Price_40);
+                Basket.AddItem(C_Item);
+            }
+            for (int d = 0; d < Item_D_QTY; d++)
+            {
+                Item D_Item = new Item("D", Price_55);
+                Basket.AddItem(D_Item);
+            }
+            // Display Total Item Count
+            Total_Items_Display.Text = Basket.Count.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -110,6 +131,9 @@ namespace CheckoutKataKeoghs
             Items.Add(Item_B);
             Items.Add(Item_C);
             Items.Add(Item_D);
+            //
+            Checkout = new Checkout(Items, Basket, CurrentActivePromotions);
+
             
         }
     }

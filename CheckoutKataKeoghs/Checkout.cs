@@ -23,6 +23,21 @@ namespace CheckoutKataKeoghs
         // Calculate Total
         public double Calculate_Total()
         {
+            // Totals
+            Double Total_Without_Promotion = 0;
+            Double Total_With_Promotion = 0;
+            //
+            foreach (var item in this.Basket.SelectedItems)
+            {
+                // Check if item SKU is in active promotions
+                if (!ActivePromotions.Active_Promotions.ContainsKey(item.SKU))
+                {
+                    // Calculate total without Promotion Items
+                    Total_Without_Promotion += item.Price.Unit_Price;
+                }
+               
+            }
+            Total = Total_Without_Promotion;
             return Total;
         }
     }
